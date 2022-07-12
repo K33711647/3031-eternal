@@ -86,7 +86,6 @@ export default function MatterExample() {
 			length: 1,
 			render: { type: "line", strokeStyle: "#A4A3A0" },
 			chamfer: 5,
-			// density: 0.05,
 		});
 		Composite.add(
 			ropeA,
@@ -139,11 +138,12 @@ export default function MatterExample() {
 				start = timestamp;
 			}
 			const elapsed = timestamp - start;
+			let offset = widthScreen < 800 ? 31 : 64;
 
 			if (previousTimeStamp !== timestamp + 10) {
 				element.style.transform =
 					"translate(" +
-					(ropeA.bodies[links / 2].position.x - 64) +
+					(ropeA.bodies[links / 2].position.x - offset) +
 					"px, " +
 					ropeA.bodies[links / 2].position.y +
 					"px)";
@@ -165,6 +165,31 @@ export default function MatterExample() {
 			center: true,
 		});
 
+		// add gyro control
+		if (typeof window !== "undefined") {
+			var updateGravity = function (event) {
+				var orientation =
+						typeof window.orientation !== "undefined" ? window.orientation : 0,
+					gravity = engine.gravity;
+
+				if (orientation === 0) {
+					gravity.x = Common.clamp(event.gamma, -90, 90) / 90;
+					gravity.y = Common.clamp(event.beta, -90, 90) / 90;
+				} else if (orientation === 180) {
+					gravity.x = Common.clamp(event.gamma, -90, 90) / 90;
+					gravity.y = Common.clamp(-event.beta, -90, 90) / 90;
+				} else if (orientation === 90) {
+					gravity.x = Common.clamp(event.beta, -90, 90) / 90;
+					gravity.y = Common.clamp(-event.gamma, -90, 90) / 90;
+				} else if (orientation === -90) {
+					gravity.x = Common.clamp(-event.beta, -90, 90) / 90;
+					gravity.y = Common.clamp(event.gamma, -90, 90) / 90;
+				}
+			};
+
+			window.addEventListener("deviceorientation", updateGravity);
+		}
+
 		// context for MatterTools.Demo
 		return {
 			engine: engine,
@@ -174,6 +199,9 @@ export default function MatterExample() {
 			stop: function () {
 				Matter.Render.stop(render);
 				Matter.Runner.stop(runner);
+				if (typeof window !== "undefined") {
+					window.removeEventListener("deviceorientation", updateGravity);
+				}
 			},
 		};
 	}, []);
