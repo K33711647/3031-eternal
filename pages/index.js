@@ -3,6 +3,7 @@ import Container from "../components/container";
 import Header from "../components/header";
 import Logo from "../components/logo";
 import Layout from "../components/layout";
+import MatterExample from "../components/matter";
 import { projectIndexQuery, splashScreenIndexQuery } from "../library/queries";
 import { getClient, overlayDrafts } from "../library/sanity.server";
 import { useState } from "react";
@@ -15,6 +16,7 @@ export default function Index({ ...pageProps }) {
           <title>Eternal</title>
         </Head>
         <Container>
+          <MatterExample />
           <Logo />
         </Container>
       </Layout>

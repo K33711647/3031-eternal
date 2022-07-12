@@ -41,7 +41,7 @@ const Header = ({ navbarOpen, setNavbarOpen, splashOpen, setSplashOpen }) => {
           </svg>
         </button>
 
-        <div className={`hidden items-center md:flex`}>
+        <div className={`z-20 hidden items-center md:relative md:flex`}>
           <button
             className={`rounded-lg border border-solid pl-7 pt-3 pb-3 pr-7 text-white hover:bg-white hover:text-black md:text-lg ${
               navbarOpen ? "" : ""
