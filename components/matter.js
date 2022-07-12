@@ -49,7 +49,7 @@ export default function MatterExample() {
 
 		// add bodies
 		var group = Body.nextGroup(true);
-		let links = widthScreen < 800 ? 80 : 110;
+		let links = widthScreen < 800 ? 60 : 110;
 		let positionStart = widthScreen < 800 ? widthScreen / 2.5 : widthScreen / 3;
 		let positionEnd =
 			widthScreen < 800 ? widthScreen / 1.25 : widthScreen / 1.5;
