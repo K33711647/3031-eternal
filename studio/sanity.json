@@ -5,7 +5,7 @@
     "dataset": "production"
   },
   "project": {
-    "name": "3019-paq"
+    "name": "3031-eternal"
   },
   "plugins": [
     "@sanity/base",
@@ -17,9 +17,7 @@
   ],
   "env": {
     "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
+      "plugins": ["@sanity/vision"]
     }
   },
   "parts": [

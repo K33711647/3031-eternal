@@ -4,7 +4,7 @@ const previewSecret = "sdfght234ertergwfd"; // Copy the string you used for SANI
 const projectUrl =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000"
-    : "https://3019-paq.vercel.app";
+    : "https://3031-eternal.vercel.app";
 
 export default function resolveProductionUrl(document) {
   return `${projectUrl}/api/preview?secret=${previewSecret}&slug=${document.slug.current}`;

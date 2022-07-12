@@ -12,7 +12,7 @@ export default function Layout({ preview, children }) {
     <>
       <Meta />
       <motion.main
-        className="h-full min-h-screen "
+        className="h-full"
         initial="hidden"
         animate="enter"
         exit="exit"

@@ -3,163 +3,53 @@
 @tailwind utilities;
 
 @font-face {
-	font-family: "suisse_intlblack";
-	src: url("/fonts/suisseintl-black-webfont.woff2") format("woff2"),
-		url("/fonts/suisseintl-black-webfont.woff") format("woff");
+	font-family: "sequel_sansbook_body";
+	src: url("/fonts/sequel_sans_book_body-webfont.woff2") format("woff2"),
+		url("/fonts/sequel_sans_book_body-webfont.woff") format("woff");
 	font-weight: normal;
 	font-style: normal;
 }
-
 @font-face {
-	font-family: "suisse_intlbold";
-	src: url("/fonts/suisseintl-bold-webfont.woff2") format("woff2"),
-		url("/fonts/suisseintl-bold-webfont.woff") format("woff");
+	font-family: "pet_me_2xmedium";
+	src: url("/fonts/petme2x-webfont.woff2") format("woff2"),
+		url("/fonts/petme2x-webfont.woff") format("woff");
 	font-weight: normal;
 	font-style: normal;
 }
-
 @font-face {
-	font-family: "suisse_intlsemi_bold";
-	src: url("/fonts/suisseintl-semibold-webfont.woff2") format("woff2"),
-		url("/fonts/suisseintl-semibold-webfont.woff") format("woff");
+	font-family: "sequel_sanslight_head";
+	src: url("/fonts/sequel_sans_light_head-webfont.woff2") format("woff2"),
+		url("/fonts/sequel_sans_light_head-webfont.woff") format("woff");
 	font-weight: normal;
 	font-style: normal;
 }
-
 @font-face {
-	font-family: "suisse_intlmedium";
-	src: url("/fonts/suisseintl-medium-webfont.woff2") format("woff2"),
-		url("/fonts/suisseintl-medium-webfont.woff") format("woff");
+	font-family: "sequel_sansbook_head";
+	src: url("/fonts/sequel_sans_book_head-webfont.woff2") format("woff2"),
+		url("/fonts/sequel_sans_book_head-webfont.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: "sequel_sansroman_body";
+	src: url("/fonts/sequel_sans_roman_body-webfont.woff2") format("woff2"),
+		url("/fonts/sequel_sans_roman_body-webfont.woff") format("woff");
 	font-weight: normal;
 	font-style: normal;
 }
 
 @layer base {
 	html {
-		font-family: suisse_intlmedium, sans-serif;
+		font-family: sequel_sansbook_body, sans-serif;
 	}
 }
 
-/* Special styling for WebKit/Blink */
-input[type="range"]::-webkit-slider-thumb {
-	padding: 1.25rem;
-	box-shadow: none;
-	background: #83ff13;
-	background-color: #83ff13;
-	color: #83ff13;
-	cursor: pointer;
-	outline: none;
-	border: none;
+svg {
+	width: 100vw;
+	height: auto;
+	max-width: 1100px;
 }
 
-/* All the same stuff for Firefox */
-input[type="range"]::-moz-range-thumb {
-	padding: 1.25rem;
-	box-shadow: none;
-	background: #83ff13;
-	background-color: #83ff13;
-	color: #83ff13;
-	cursor: pointer;
-	outline: none;
-	border: none;
+svg path {
+	stroke: #f2f2f2;
 }
-
-/* All the same stuff for IE */
-input[type="range"]::-ms-thumb {
-	padding: 1.25rem;
-	box-shadow: none;
-	background: #83ff13;
-	background-color: #83ff13;
-	color: #83ff13;
-	cursor: pointer;
-	outline: none;
-	border: none;
-}
-
-ul {
-	scroll-behavior: smooth;
-}
-
-.hide-scroll-bar {
-	-ms-overflow-style: none; /* for Internet Explorer, Edge */
-	scrollbar-width: none; /* for Firefox */
-}
-
-.hide-scroll-bar::-webkit-scrollbar {
-	display: none; /* for Chrome, Safari, and Opera */
-}
-
-details > summary {
-	list-style-type: "";
-	list-style: none;
-}
-
-details[open] > summary {
-	list-style-type: "";
-	list-style: none;
-}
-
-details > summary::-webkit-details-marker {
-	display: none;
-}
-
-details summary:before {
-	transition: transform 0.5s;
-	transform-origin: center;
-	transform: rotate(0deg);
-
-	height: 40px;
-	width: 40px;
-
-	border: 2px solid;
-	border-radius: 50%;
-
-	text-align: center;
-}
-
-details[open] summary:before {
-	transform: rotate(-135deg);
-}
-
-h1 {
-	font-family: suisse_intlsemi_bold, sans-serif;
-	font-size: 2.25rem;
-	line-height: 2.5rem;
-}
-
-h2 {
-	text-transform: uppercase;
-	padding-bottom: 2rem;
-}
-
-/* Rotate  */
-
-.rotate {
-	perspective: 200px;
-}
-
-.rotate-item {
-	transform: rotateY(0deg);
-	animation: rotateAnimation 15s linear infinite;
-}
-
-@keyframes rotateAnimation {
-	from {
-		transform: rotateY(0deg);
-	}
-	to {
-		transform: rotateY(360deg);
-	}
-}
-
-.rotate-item--on-hover:hover {
-	transform: rotateY(0deg);
-	animation: rotateAnimation 15s linear infinite;
-}
-
-/*html {
-	cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAAAsCAYAAADhJn/jAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAUWSURBVHgB7VvrcRs3EP6cyf8wFRiqwOxASAVmB7xUEKYCwhVIqYBUBXQqIFOB5Qp4qsBKBcqtAQzB5e49wRNl5pvZuQewe4sPrwXu7h1eF6aSSSXTcP4+uW/C+SSIhGdBnsKxDPIYrl8F7zAeiMTbSm7C0UAnLjeIYCL6ayVfwvERI+CcBNtKPlQygyd3LDLbIpL+uZJ/cCbCcxNs4Qmdox2hsStT4f6tZB+OZZCIUtGfCELDzK/wlRuHnza+lJXsKnkIxyzIQbBFO1JLeMeJzKdwLDEOItFEusVhzNdQwvv6CeP5eAJbybaSF0W+VbKqpEB9YV4LBt63NXzP0cpBZZxjRBQ1DhGp9/DkvzVY1JNN989KtIXeYjd4m6RqsPBka0R/REbQ+LWB3FodLi86yAkD3yOlVr1ChqHPwhN5bcRyGPgycy6I+Bl6Ygm51q6JWA4DeehYagpamBZn/4iykt/RLj507Ppz0P8DvrapgmL8S2kPDfZs0E1DqxjiPQQbTfr03Nvk2aT/KaQXqPdfs8mHCBpK/myh+12RhyldWi2v3Tucdi3ezYxgZyL48qLYh6K/adCV0tvCCPqrJqUlU3DojpceQiTzSrzroO8EP7709KUrHNpV+PeuMpRcoF+h+PMs5EqgbrjB6axOPSStoOUAP/rAMRsLnsEwp+/RH5LTMfKw0GPMlKR71LfwqaCfxqZ7IX0LPxZb1C+W+mINvcKPEnlhukJy2gj57oV8NkknEmeQV4ZG0C1CmhXSNsLzyYY0N/QFcZZW2kpztndcF8AdXkF3iBdwoeSz8ATGIUIipgj5nZA2VXyQ8g6BZbYmP+O4dezQHPZ0xZNy/zlI2lv4ORH6Ed16lJT3UclbIi92QWy4Ln7C8QbGGvnxjO4w8FEA+TbJZFPCORZNfyfnlgg2yY2vyA9tY8TgdGyOxDkh7a9KfoN/5UQb6iVkSPetklcbOoYgHQFo/znb+BMhTXJzIZ8U5McC8xiWD1sTdJvkyJ5hNmaKrzlwZG8MguNkV8Ave6VFwD6xscdpiJViCZ1gQN5WJZsuPL9uhZcDR/bSwhgMx0tPmSc2JALoHk16W0W/SPTtAD+GIo3R97wwCwxHn0I5ZsO20OGhWsFsuJ6+DEUB1vMW/MZAcIfXqH/FpFWqg04C2eQLFSfYKND8eis3wdvE1py2K2PAH0Ez9Q79wZ2kbUEHX9jbcI9ezVNsSpNXXchlmF6Jw2v1KY6jgBK633GJ/Eu4fgx26P6K5R3ypp3spavGm3iyxvG4kXOp7HC5KJCvBatL5Zj4TUvsiGslON1eJaINz7BgD1qiH66R4CWzMdcy8kG/D8nXRjB/MeCaFNZMgQZtg/a4FoJpWN3iNLppBWnD2+J/RFichn9rdITDae2ucJnfmY0FarVrZOylFNfxmqJoY4nrIpqIpTJLH+FYDISBXGtE/B1+bKI1YuPclHU/WWrN6dBh8ePAQt9x2+LMZS1Q/4nnWyXbwk/u2kcyVLY5RkSB+g+wI9nklMHlwcCXgXys+/JoUIvN8QuBgZ9Fb9H8WT5tsuxw+Msn17u1Jhj4jaH34WhR7yv5Fb9722EAchCcwuKw+2Va5I8f4tGRSKeWFP9z4yLBsHMS2jG7Ccf4wWCbySgbqSlyE5yCCkdEz3D5v3FR5e5wBpyTYI5pIh8wLulEZgn/P9weZ/wvjmNMgiUQwbEbGxz+c5sIIiEdPkocXtk/4fg32hKvhP8AxltbPKfqUbYAAAAASUVORK5CYII=")
-			10 10,
-		pointer;
-
-}*/
