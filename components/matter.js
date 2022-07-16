@@ -59,18 +59,24 @@ export default function MatterExample() {
 				return Bodies.circle(widthScreen / 3, 0, 5, {
 					render: {
 						fillStyle: "transparent",
-						lineWidth: 2,
+						lineWidth: 1,
 						strokeStyle: "#A4A3A0",
 					},
+					// inertia: Infinity,
+					friction: 0.00001,
+					stiffness: 0.06,
 				});
 			if (index == links / 2)
-				return Bodies.circle(widthScreen / 3, 0, 5, {
+				return Bodies.circle(widthScreen / 3, 0, 8, {
 					render: {
 						fillStyle: "#A4A3A0",
-						lineWidth: 5,
+						lineWidth: 1,
 						strokeStyle: "#A4A3A0",
 					},
-					density: 0.025,
+					density: 0.015,
+					// inertia: Infinity,
+					friction: 0.00001,
+					stiffness: 0.06,
 				});
 			return Bodies.circle(widthScreen / 1.5, 0, 5, {
 				render: {
@@ -78,14 +84,17 @@ export default function MatterExample() {
 					lineWidth: 2,
 					strokeStyle: "#A4A3A0",
 				},
+				// inertia: Infinity,
+				friction: 0.00001,
+				stiffness: 0.06,
 			});
 		});
 
 		Composites.chain(ropeA, 0.5, 0, -0.5, 0, {
 			stiffness: 1,
-			length: 1,
+			length: 0.5,
 			render: { type: "line", strokeStyle: "#A4A3A0" },
-			chamfer: 5,
+			// chamfer: 15,
 		});
 		Composite.add(
 			ropeA,
@@ -96,7 +105,7 @@ export default function MatterExample() {
 					x: ropeA.bodies[0].position.x,
 					y: ropeA.bodies[0].position.y,
 				},
-				stiffness: 0.15,
+				stiffness: 0.05,
 			})
 		);
 
@@ -109,7 +118,7 @@ export default function MatterExample() {
 					x: ropeA.bodies[links - 1].position.x,
 					y: ropeA.bodies[links - 1].position.y,
 				},
-				stiffness: 0.15,
+				stiffness: 0.05,
 			})
 		);
 
