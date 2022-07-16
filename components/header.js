@@ -42,13 +42,17 @@ const Header = ({ navbarOpen, setNavbarOpen, splashOpen, setSplashOpen }) => {
         </button>
 
         <div className={`z-20 hidden items-center md:relative md:flex`}>
-          <button
-            className={`rounded-lg border border-solid pl-7 pt-3 pb-3 pr-7 text-white hover:bg-white hover:text-black md:text-lg ${
-              navbarOpen ? "" : ""
-            }`}
-          >
-            Download Eternal+
-          </button>
+          <Link href="https://apps.apple.com/us/app/eternal/id1615235638">
+            <a
+              target="_blank"
+              rel="noreferrer"
+              className={`rounded-lg border border-solid pl-7 pt-3 pb-3 pr-7 text-white hover:bg-white hover:text-black md:text-lg ${
+                navbarOpen ? "" : ""
+              }`}
+            >
+              Download Eternal+
+            </a>
+          </Link>
         </div>
       </header>
     </>

@@ -167,12 +167,18 @@ export default function MatterExample() {
 		render.mouse = mouse;
 
 		// fit the render viewport to the scene
-		// fit the render viewport to the scene
 		Render.lookAt(render, {
 			min: { x: 0, y: 0 },
 			max: { x: widthScreen, y: heightScreen },
 			center: true,
 		});
+
+		// window.addEventListener("resize", function () {
+		// 	if (Render) {
+		// 		Render.canvas.width = widthScreen;
+		// 		Render.canvas.height = heightScreen;
+		// 	}
+		// });
 
 		// add gyro control
 		if (typeof window !== "undefined") {
