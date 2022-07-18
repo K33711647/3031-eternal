@@ -1,4 +1,94 @@
+import { useEffect, useRef } from "react";
+
+// https://greensock.com/forums/topic/24799-syntaxerror-unexpected-token-export-on-npm-import/?do=findComment&comment=118873&_rid=120250
+import { gsap } from "gsap/dist/gsap.js";
+import { DrawSVGPlugin } from "gsap/dist/DrawSVGPlugin.js";
+
+gsap.registerPlugin(DrawSVGPlugin);
+
 export default function Logo() {
+	useEffect(() => {
+		gsap.set(".strokes", { drawSVG: 0, stroke: "#ffffff" });
+
+		let tl = gsap.timeline({
+			defaults: { ease: "none" },
+			repeatDelay: 1,
+		});
+
+		tl.timeScale(2);
+
+		tl.to("#path1", {
+			drawSVG: true,
+			ease: "sine.in",
+			duration: 1,
+		})
+			.to(
+				"#path2, #path3",
+				{
+					drawSVG: true,
+					ease: "sine.inOut",
+					duration: 0.4,
+					stagger: 0.3,
+				},
+				"<1.2"
+			)
+			.to("#path4", {
+				drawSVG: true,
+				ease: "sine.in",
+				duration: 0.6,
+			})
+			.to(
+				"#path5",
+				{
+					drawSVG: true,
+					ease: "sine.in",
+					duration: 0.5,
+				},
+				"+=0.5"
+			)
+			.to(
+				"#path6",
+				{
+					drawSVG: true,
+					ease: "sine.inout",
+					duration: 1.5,
+				},
+				"<0.4"
+			)
+			.to(
+				"#path7",
+				{
+					drawSVG: true,
+					ease: "sine.in",
+					duration: 1,
+				},
+				"<0.6"
+			)
+			.to(
+				"#path8",
+				{
+					drawSVG: true,
+					ease: "sine.in",
+					duration: 0.5,
+				},
+				"+=0.3"
+			)
+			.to("#path9", {
+				drawSVG: true,
+				ease: "sine.in",
+				duration: 0.6,
+			})
+			.to(
+				"#path10",
+				{
+					drawSVG: true,
+					ease: "sine.inout",
+					duration: 1.1,
+				},
+				"<0.5"
+			);
+	}, []);
+
 	return (
 		<div className="absolute top-0 z-0 flex h-full w-full justify-center p-20 md:p-0">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
