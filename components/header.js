@@ -16,14 +16,12 @@ const Header = ({ navbarOpen, setNavbarOpen, splashOpen, setSplashOpen }) => {
   return (
     <>
       <header
-        className={`flex w-full justify-between p-10 md:p-16 ${
-          navbarOpen ? "fixed" : "relatve"
+        className={`absolute z-20 flex w-full justify-between p-10 md:p-16 ${
+          navbarOpen ? "" : ""
         }`}
       >
         <button
-          className={`relative top-0 left-0 z-20 flex h-10 w-10 md:h-20 md:w-20  ${
-            navbarOpen ? "" : ""
-          }`}
+          className={`flex h-10 w-10 md:h-20 md:w-20  ${navbarOpen ? "" : ""}`}
           onClick={() => {
             setNavbarOpen(!navbarOpen);
             goToTop(event);

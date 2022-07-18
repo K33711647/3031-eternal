@@ -3,10 +3,9 @@
 const projectFields = `
   _id,
   id,
-  client,
+  title,
+  description,
   image,
-  ratio,
-  projectBuilder,
   "slug": slug.current,
 `;
 

@@ -7,11 +7,11 @@ export default () =>
   S.list()
     .title("Content")
     .items([
-      S.listItem()
-        .title("Splash Screen")
-        .child(
-          S.document().schemaType("splashScreen").documentId("splashScreen")
-        ),
+      // S.listItem()
+      //   .title("Splash Screen")
+      //   .child(
+      //     S.document().schemaType("splashScreen").documentId("splashScreen")
+      //   ),
       orderableDocumentListDeskItem({
         type: "projects",
         title: "Projects",

@@ -25,18 +25,6 @@ export default {
           input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
       },
     },
-    {
-      name: "pageBuilder",
-      type: "array",
-      title: "Page modules",
-      of: [
-        { type: "pageModuleImage" },
-        { type: "pageModuleSectionTitle" },
-        { type: "pageModuleLargeText" },
-        { type: "pageModuleAccordion" },
-        { type: "pageModulePaq" },
-      ],
-    },
   ],
   preview: {
     select: {

@@ -12,12 +12,12 @@ const MenuOverlay = ({ navbarOpen, setNavbarOpen }) => {
   };
   return (
     <div
-      className={`fixed top-0 left-0 z-20 flex h-full w-full transform flex-row flex-wrap  bg-black bg-opacity-100 p-5 text-grey transition-all duration-1000 md:p-10 ${
-        navbarOpen ? "translate-y-full" : "translate-y-full"
+      className={`fixed top-0 left-0 z-20 flex h-screen w-screen translate-y-full transform flex-row flex-wrap bg-black p-10 text-grey transition-all duration-1000 md:p-20 ${
+        navbarOpen ? "" : "hidden h-0"
       }`}
     >
       <button
-        className={`fixed top-10 left-10  z-30 flex h-5 w-5 transition-all duration-1000 ${
+        className={`flex h-5 w-5 duration-1000 md:h-10 md:w-10 ${
           navbarOpen ? "opacity-100" : "opacity-0"
         }`}
         onClick={() => {
@@ -32,10 +32,10 @@ const MenuOverlay = ({ navbarOpen, setNavbarOpen }) => {
       </button>
 
       <nav className="relative z-20 flex w-full flex-row flex-wrap content-end pt-10 md:content-end md:text-center">
-        <Link href="/work">
+        <Link href="/">
           <a
-            className={`-translate-z-full relative w-full p-5 font-semi text-2xl uppercase transition-all delay-[300ms] duration-300 hover:text-white focus:text-white focus:outline-none lg:text-4xl ${
-              navbarOpen ? "translate-z-0" : "-translate-z-full"
+            className={`relative w-full pb-10 font-semi text-2xl uppercase delay-[300ms] duration-300 hover:text-white focus:text-white focus:outline-none lg:text-4xl ${
+              navbarOpen ? "translate-y-0" : "translate-y-80"
             }`}
             onClick={(e) => {
               setNavbarOpen(false);
@@ -44,10 +44,10 @@ const MenuOverlay = ({ navbarOpen, setNavbarOpen }) => {
             Who we are
           </a>
         </Link>
-        <Link href="/about">
+        <Link href="/">
           <a
-            className={`-translate-z-full relative w-full p-5 font-semi text-2xl uppercase transition-all delay-[350ms] duration-300 hover:text-white focus:text-white focus:outline-none lg:text-4xl ${
-              navbarOpen ? "translate-z-0" : "-translate-z-full"
+            className={`relative w-full pb-10 font-semi text-2xl uppercase delay-[350ms] duration-300 hover:text-white focus:text-white focus:outline-none lg:text-4xl ${
+              navbarOpen ? "translate-y-0" : "translate-y-80"
             }`}
             onClick={(e) => {
               setNavbarOpen(false);
@@ -58,8 +58,8 @@ const MenuOverlay = ({ navbarOpen, setNavbarOpen }) => {
         </Link>
         <Link href="/">
           <a
-            className={`-translate-z-full relative w-full p-5 font-semi text-2xl uppercase transition-all delay-[400ms] duration-300 hover:text-white focus:text-white focus:outline-none lg:text-4xl ${
-              navbarOpen ? "translate-z-0" : "-translate-z-full"
+            className={`relative w-full pb-10 font-semi text-2xl uppercase delay-[400ms] duration-300 hover:text-white focus:text-white focus:outline-none lg:text-4xl ${
+              navbarOpen ? "translate-y-0" : "translate-y-80"
             }`}
             onClick={(e) => {
               setNavbarOpen(false);
@@ -70,8 +70,8 @@ const MenuOverlay = ({ navbarOpen, setNavbarOpen }) => {
         </Link>
         <Link href="/">
           <a
-            className={`-translate-z-full relative w-full p-5 font-semi text-2xl uppercase transition-all delay-[450ms] duration-300 hover:text-white focus:text-white focus:outline-none lg:text-4xl ${
-              navbarOpen ? "translate-z-0" : "-translate-z-full"
+            className={`relative w-full pb-10 font-semi text-2xl uppercase delay-[450ms] duration-300 hover:text-white focus:text-white focus:outline-none lg:text-4xl ${
+              navbarOpen ? "translate-y-0" : "translate-y-80"
             }`}
             onClick={(e) => {
               setNavbarOpen(false);
@@ -82,8 +82,8 @@ const MenuOverlay = ({ navbarOpen, setNavbarOpen }) => {
         </Link>
         <Link href="/">
           <a
-            className={`-translate-z-full relative w-full p-5 font-semi text-2xl uppercase transition-all delay-[500ms] duration-300 hover:text-white focus:text-white focus:outline-none lg:text-4xl ${
-              navbarOpen ? "translate-z-0" : "-translate-z-full"
+            className={`relative w-full pb-10 font-semi text-2xl uppercase delay-[500ms] duration-300 hover:text-white focus:text-white focus:outline-none lg:text-4xl ${
+              navbarOpen ? "translate-y-0" : "translate-y-80"
             }`}
             onClick={(e) => {
               setNavbarOpen(false);

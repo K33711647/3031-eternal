@@ -9,7 +9,7 @@ module.exports = {
       limegreen: "#83FF13",
       black: "#000000",
       white: "#ffffff",
-      grey: "#F2F2F2",
+      grey: "#A4A3A0",
       blue: "#0000FF",
       transparent: "transparent",
     },

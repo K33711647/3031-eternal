@@ -11,8 +11,8 @@ export default {
   fields: [
     orderRankField({ type: "projects" }),
     {
-      name: "client",
-      title: "Client",
+      name: "title",
+      title: "Title",
       type: "string",
     },
     {
@@ -20,8 +20,13 @@ export default {
       title: "Slug",
       type: "slug",
       options: {
-        source: "client",
+        source: "title",
       },
+    },
+    {
+      name: "description",
+      title: "Description",
+      type: "text",
     },
     {
       name: "image",
@@ -39,36 +44,14 @@ export default {
       ],
     },
     {
-      title: "Set Image Ratio",
-      name: "ratio",
+      name: "video",
+      title: "YouTube ID",
       type: "string",
-      of: [{ type: "string" }],
-      options: {
-        layout: "tags",
-        list: [
-          { title: "100%", value: "100%", initialValue: true },
-          { title: "80%", value: "80%" },
-          { title: "75%", value: "75%" },
-          { title: "50%", value: "50%" },
-          { title: "25%", value: "25%" },
-        ],
-      },
-    },
-    {
-      name: "projectBuilder",
-      type: "array",
-      title: "Project modules",
-      of: [
-        { type: "projectModuleImages" },
-        { type: "projectModuleVideo" },
-        { type: "projectModuleText" },
-      ],
     },
   ],
   preview: {
     select: {
-      title: "client",
-      // subtitle: "client",
+      title: "title",
     },
   },
 };
