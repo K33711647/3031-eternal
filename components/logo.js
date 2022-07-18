@@ -91,7 +91,14 @@ export default function Logo() {
 
 	return (
 		<div className="absolute top-0 z-0 flex h-full w-full justify-center p-20 md:p-0">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 1920 1080"
+				aria-describedby="title description"
+				role="img"
+			>
+				<title id="title">Eternal</title>
+				<desc id="description">Animated text</desc>
 				<defs>
 					<clipPath id="clipPath">
 						<path

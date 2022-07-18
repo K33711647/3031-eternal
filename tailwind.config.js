@@ -9,15 +9,15 @@ module.exports = {
       limegreen: "#83FF13",
       black: "#000000",
       white: "#ffffff",
-      grey: "#EDEDED",
+      grey: "#F2F2F2",
       blue: "#0000FF",
       transparent: "transparent",
     },
     fontFamily: {
-      black: ["suisse_intlblack"],
-      medium: ["suisse_intlmedium"],
-      semi: ["suisse_intlsemi_bold"],
-      bold: ["suisse_intlbold"],
+      black: ["pet_me_2xmedium"],
+      medium: ["sequel_sansbook_body"],
+      semi: ["sequel_sansbook_head"],
+      bold: ["sequel_sansroman_body"],
     },
     extend: {
       transitionProperty: {

@@ -222,7 +222,7 @@ export default function MatterExample() {
 	}, []);
 
 	return (
-		<div ref={boxRef} className="absolute top-[-200px] left-0 z-10">
+		<div ref={boxRef} className="absolute top-[-200px] left-0 z-[15]">
 			<svg
 				viewBox="0 0 67 76"
 				fill="none"
