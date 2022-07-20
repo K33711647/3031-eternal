@@ -29,6 +29,10 @@ module.exports = {
       fontSize: {
         vw25: "25vw",
       },
+      padding: {
+        "1/2": "50%",
+        full: "100%",
+      },
     },
   },
   corePlugins: {

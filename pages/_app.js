@@ -7,6 +7,9 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import MenuOverlay from "../components/menuOverlay";
 
+import SwiperCore, { Navigation } from "swiper";
+SwiperCore.use([Navigation]);
+
 export default function App({ Component, pageProps, router }) {
   const url = `${router.route}`;
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -15,7 +18,7 @@ export default function App({ Component, pageProps, router }) {
     <>
       <ThemeProvider attribute="class">
         <div
-          className={`h-screen transition-all duration-1000 ${
+          className={`transition-translate h-screen duration-1000 ${
             navbarOpen ? "-translate-y-full" : "translate-y-0"
           }`}
         >
@@ -28,8 +31,8 @@ export default function App({ Component, pageProps, router }) {
           >
             <Component {...pageProps} key={url} />
           </AnimatePresence>
-          <Footer />
         </div>
+        <Footer />
       </ThemeProvider>
     </>
   );

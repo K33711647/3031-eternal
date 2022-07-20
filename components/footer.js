@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Footer() {
   const router = useRouter();
   return (
-    <footer className={`absolute bottom-0 w-full`}>
+    <footer className={`fixed bottom-0 z-30 w-full`}>
       <div className="grid w-full grid-cols-1 p-10 md:grid-cols-2 md:p-16">
         <div className="">
           <p className="pb-10 text-center text-white md:pb-0 md:text-left">

@@ -31,7 +31,7 @@ const MenuOverlay = ({ navbarOpen, setNavbarOpen }) => {
         </svg>
       </button>
 
-      <nav className="relative z-20 flex w-full flex-row flex-wrap content-end pt-10 md:content-end md:text-center">
+      <nav className="relative z-20 flex w-full flex-row flex-wrap content-end pt-10 text-center md:content-end">
         <Link href="/">
           <a
             className={`relative w-full pb-10 font-semi text-2xl uppercase delay-[300ms] duration-300 hover:text-white focus:text-white focus:outline-none lg:text-4xl ${

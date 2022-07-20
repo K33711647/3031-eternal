@@ -30,7 +30,7 @@ export default function MatterExample() {
 			canvas: canvasRef.current,
 			options: {
 				width: widthScreen,
-				height: heightScreen,
+				height: heightScreen + 200,
 				background: "rgb(0,0,0,0)",
 				wireframes: false,
 				// background: "rgba(255, 255, 255,1)",
@@ -154,7 +154,7 @@ export default function MatterExample() {
 					"translate(" +
 					(ropeA.bodies[links / 2].position.x - offset) +
 					"px, " +
-					ropeA.bodies[links / 2].position.y +
+					(ropeA.bodies[links / 2].position.y + 100) +
 					"px)";
 			}
 
