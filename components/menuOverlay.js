@@ -44,7 +44,7 @@ const MenuOverlay = ({ navbarOpen, setNavbarOpen }) => {
             Who we are
           </a>
         </Link>
-        <Link href="/">
+        <Link href="/projects">
           <a
             className={`relative w-full pb-10 font-semi text-2xl uppercase delay-[350ms] duration-300 hover:text-white focus:text-white focus:outline-none lg:text-4xl ${
               navbarOpen ? "translate-y-0" : "translate-y-80"

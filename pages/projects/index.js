@@ -23,7 +23,7 @@ export default function Index({ allProjects, ...pageProps }) {
     slidesPerView: 1,
     draggable: 1,
     modules: [Navigation],
-    // initialSlide: 2,
+    initialSlide: 2,
     navigation: {
       prevEl: previous,
       nextEl: next,
@@ -35,6 +35,7 @@ export default function Index({ allProjects, ...pageProps }) {
   useEffect(() => {
     // This is be executed when `loading` state changes
     swiperStatus.current = new Swiper(swiperRef.current, swiperOpts);
+    goToSlide();
   }, [loading, swiperOpts]);
 
   let swiper = swiperStatus.current;
@@ -50,7 +51,9 @@ export default function Index({ allProjects, ...pageProps }) {
     setLoading(true);
   }
 
-  // console.log(swiperStatus.current);
+  function goToSlide() {
+    swiperStatus.current.slideTo(4);
+  }
 
   return (
     <>
@@ -111,11 +114,14 @@ export default function Index({ allProjects, ...pageProps }) {
             </div>
             <div
               className={` origin-bottom transition-all duration-1000 ${
-                swiperActive ? "swiper-wrapper " : "grid grid-cols-4 gap-10"
+                swiperActive
+                  ? "swiper-wrapper "
+                  : "grid grid-cols-2 gap-10 xl:grid-cols-4"
               }`}
             >
               <div
                 onClick={init}
+                data-slide-id="4"
                 className={`relative text-white ${
                   swiperActive
                     ? "swiper-slide flex h-screen w-screen items-center justify-center"
@@ -131,11 +137,13 @@ export default function Index({ allProjects, ...pageProps }) {
                     className={`text-center ${
                       swiperActive
                         ? ""
-                        : "absolute top-0 flex h-full w-full items-center justify-center"
+                        : "absolute top-0 flex h-full w-full items-center justify-center bg-black opacity-0 hover:opacity-70"
                     }`}
                   >
-                    <h3>Exit Sign</h3>
-                    <p>An imaginary web series by Eternal.</p>
+                    <h3>1 Exit Sign</h3>
+                    <p className={`${swiperActive ? "" : "hidden"}`}>
+                      An imaginary web series by Eternal.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -157,11 +165,13 @@ export default function Index({ allProjects, ...pageProps }) {
                     className={`text-center ${
                       swiperActive
                         ? ""
-                        : "absolute top-0 flex h-full w-full items-center justify-center"
+                        : "absolute top-0 flex h-full w-full items-center justify-center bg-black opacity-0 hover:opacity-70"
                     }`}
                   >
-                    <h3>Exit Sign</h3>
-                    <p>An imaginary web series by Eternal.</p>
+                    <h3>2 Exit Sign</h3>
+                    <p className={`${swiperActive ? "" : "hidden"}`}>
+                      An imaginary web series by Eternal.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -183,11 +193,13 @@ export default function Index({ allProjects, ...pageProps }) {
                     className={`text-center ${
                       swiperActive
                         ? ""
-                        : "absolute top-0 flex h-full w-full items-center justify-center"
+                        : "absolute top-0 flex h-full w-full items-center justify-center bg-black opacity-0 hover:opacity-70"
                     }`}
                   >
-                    <h3>Exit Sign</h3>
-                    <p>An imaginary web series by Eternal.</p>
+                    <h3>3 Exit Sign</h3>
+                    <p className={`${swiperActive ? "" : "hidden"}`}>
+                      An imaginary web series by Eternal.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -209,11 +221,13 @@ export default function Index({ allProjects, ...pageProps }) {
                     className={`text-center ${
                       swiperActive
                         ? ""
-                        : "absolute top-0 flex h-full w-full items-center justify-center"
+                        : "absolute top-0 flex h-full w-full items-center justify-center bg-black opacity-0 hover:opacity-70"
                     }`}
                   >
-                    <h3>Exit Sign</h3>
-                    <p>An imaginary web series by Eternal.</p>
+                    <h3>4 Exit Sign</h3>
+                    <p className={`${swiperActive ? "" : "hidden"}`}>
+                      An imaginary web series by Eternal.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -235,11 +249,13 @@ export default function Index({ allProjects, ...pageProps }) {
                     className={`text-center ${
                       swiperActive
                         ? ""
-                        : "absolute top-0 flex h-full w-full items-center justify-center"
+                        : "absolute top-0 flex h-full w-full items-center justify-center bg-black opacity-0 hover:opacity-70"
                     }`}
                   >
-                    <h3>Exit Sign</h3>
-                    <p>An imaginary web series by Eternal.</p>
+                    <h3>5 Exit Sign</h3>
+                    <p className={`${swiperActive ? "" : "hidden"}`}>
+                      An imaginary web series by Eternal.
+                    </p>
                   </div>
                 </div>
               </div>
