@@ -90,7 +90,7 @@ export default function Logo() {
 	}, []);
 
 	return (
-		<div className="absolute top-0 z-0 flex h-full w-full justify-center p-20 md:p-0">
+		<div className="absolute top-0 z-0 flex h-full w-full justify-center px-10 py-28 md:p-10">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 1920 1080"

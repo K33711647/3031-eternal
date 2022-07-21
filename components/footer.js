@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className={`fixed bottom-0 z-30 w-full`}>
       <div className="grid w-full grid-cols-1 p-10 md:grid-cols-2 md:p-16">
         <div className="">
-          <p className="pb-10 text-center text-white md:pb-0 md:text-left">
+          <p className="pb-10 text-center text-sm text-white md:pb-0 md:text-left md:text-base">
             324 Grand St
             <br />
             Storefront A<br />
