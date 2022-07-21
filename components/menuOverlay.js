@@ -31,11 +31,11 @@ const MenuOverlay = ({ navbarOpen, setNavbarOpen }) => {
         </svg>
       </button>
 
-      <nav className="relative z-20 flex w-full flex-row flex-wrap content-end pt-10 text-center md:content-end">
+      <nav className="relative z-20 flex w-full flex-row flex-wrap content-start pt-10 text-center">
         <Link href="/">
           <a
-            className={`relative w-full pb-10 font-semi text-2xl uppercase delay-[300ms] duration-300 hover:text-white focus:text-white focus:outline-none lg:text-4xl ${
-              navbarOpen ? "translate-y-0" : "translate-y-80"
+            className={`relative w-full py-2 font-semi text-xl uppercase transition-all delay-[300ms] duration-[2000ms] hover:text-white focus:text-white focus:outline-none lg:py-4 lg:text-4xl ${
+              navbarOpen ? "pb-0" : "pb-28"
             }`}
             onClick={(e) => {
               setNavbarOpen(false);
@@ -46,8 +46,8 @@ const MenuOverlay = ({ navbarOpen, setNavbarOpen }) => {
         </Link>
         <Link href="/projects">
           <a
-            className={`relative w-full pb-10 font-semi text-2xl uppercase delay-[350ms] duration-300 hover:text-white focus:text-white focus:outline-none lg:text-4xl ${
-              navbarOpen ? "translate-y-0" : "translate-y-80"
+            className={` relative w-full py-2 font-semi text-xl uppercase transition-all delay-[1350ms] duration-[2000ms] hover:text-white focus:text-white focus:outline-none lg:py-4 lg:text-4xl ${
+              navbarOpen ? "pb-0" : "pb-28"
             }`}
             onClick={(e) => {
               setNavbarOpen(false);
@@ -58,8 +58,8 @@ const MenuOverlay = ({ navbarOpen, setNavbarOpen }) => {
         </Link>
         <Link href="/">
           <a
-            className={`relative w-full pb-10 font-semi text-2xl uppercase delay-[400ms] duration-300 hover:text-white focus:text-white focus:outline-none lg:text-4xl ${
-              navbarOpen ? "translate-y-0" : "translate-y-80"
+            className={`relative w-full py-2 font-semi text-xl uppercase transition-all delay-[1450ms] duration-[2000ms] hover:text-white focus:text-white focus:outline-none lg:py-4 lg:text-4xl ${
+              navbarOpen ? "pb-0" : "pb-28"
             }`}
             onClick={(e) => {
               setNavbarOpen(false);
@@ -70,8 +70,8 @@ const MenuOverlay = ({ navbarOpen, setNavbarOpen }) => {
         </Link>
         <Link href="/">
           <a
-            className={`relative w-full pb-10 font-semi text-2xl uppercase delay-[450ms] duration-300 hover:text-white focus:text-white focus:outline-none lg:text-4xl ${
-              navbarOpen ? "translate-y-0" : "translate-y-80"
+            className={`relative w-full py-2 font-semi text-xl uppercase transition-all delay-[1450ms] duration-[2000ms] hover:text-white focus:text-white focus:outline-none lg:py-4 lg:text-4xl ${
+              navbarOpen ? "pb-0" : "pb-28"
             }`}
             onClick={(e) => {
               setNavbarOpen(false);
@@ -82,8 +82,8 @@ const MenuOverlay = ({ navbarOpen, setNavbarOpen }) => {
         </Link>
         <Link href="/">
           <a
-            className={`relative w-full pb-10 font-semi text-2xl uppercase delay-[500ms] duration-300 hover:text-white focus:text-white focus:outline-none lg:text-4xl ${
-              navbarOpen ? "translate-y-0" : "translate-y-80"
+            className={` relative w-full py-2 font-semi text-xl uppercase transition-all delay-[1500ms] duration-[2000ms] hover:text-white focus:text-white focus:outline-none lg:py-4 lg:text-4xl ${
+              navbarOpen ? "pb-0" : "pb-28"
             }`}
             onClick={(e) => {
               setNavbarOpen(false);
