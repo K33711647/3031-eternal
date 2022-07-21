@@ -1,9 +1,11 @@
 import { useTheme } from "next-themes";
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Header = ({ navbarOpen, setNavbarOpen, splashOpen, setSplashOpen }) => {
   const { theme, setTheme } = useTheme();
+  const router = useRouter();
 
   const goToTop = (event) => {
     event.preventDefault();
@@ -40,7 +42,11 @@ const Header = ({ navbarOpen, setNavbarOpen, splashOpen, setSplashOpen }) => {
           </svg>
         </button>
 
-        <div className={`z-20 hidden items-center md:relative md:flex`}>
+        <div
+          className={`${
+            router.pathname === "/" ? "" : "md:hidden"
+          } z-20 hidden items-center md:relative md:flex`}
+        >
           <Link href="https://apps.apple.com/us/app/eternal/id1615235638">
             <a
               target="_blank"

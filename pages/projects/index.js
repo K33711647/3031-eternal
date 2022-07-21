@@ -67,22 +67,35 @@ export default function Index({ allProjects, ...pageProps }) {
               swiperActive ? "relative z-50 h-full w-full bg-black " : ""
             }`}
           >
-            <div className="fixed top-0 z-50 flex w-screen items-center justify-center ">
-              <h1
-                className={`text-white ${swiperActive ? "" : "hidden"}`}
+            <div className="fixed top-11 left-11 z-50 flex items-center justify-center md:top-20 md:left-20 ">
+              <div
+                className={`flex h-6 w-6 text-white duration-1000 md:h-10 md:w-10 ${
+                  swiperActive ? "" : "hidden"
+                }`}
                 onClick={destroy}
               >
-                destroy
-              </h1>
+                <svg
+                  viewBox="0 0 34 34"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M1 1L32.5 32.5" stroke="white" strokeWidth="2" />
+                  <path
+                    d="M1 32.5L32.5 0.999999"
+                    stroke="white"
+                    strokeWidth="2"
+                  />
+                </svg>
+              </div>
             </div>
             <div
               ref={swiperRef}
-              className={`h-screen origin-bottom py-32 px-5 text-white transition-all duration-1000 lg:px-60 lg:py-40 ${
+              className={`h-full py-32 px-5 text-white transition-all duration-1000 md:py-40 lg:px-60 ${
                 swiperActive ? "swiper" : ""
               }`}
             >
               <div className={`${swiperActive ? "" : "hidden"}`}>
-                <div className="fixed left-5 z-50 flex h-screen w-8 items-center justify-center md:left-28 md:w-14">
+                <div className="absolute left-5 z-50 flex h-screen w-8 items-center justify-center md:left-20 md:w-14">
                   <svg
                     ref={swiperPrevious}
                     viewBox="0 0 61 61"
@@ -99,7 +112,7 @@ export default function Index({ allProjects, ...pageProps }) {
                     />
                   </svg>
                 </div>
-                <div className="fixed right-5 z-50 flex h-screen w-8 items-center justify-center md:right-28 md:w-14">
+                <div className="absolute right-5 z-50 flex h-screen w-8 items-center justify-center md:right-28 md:w-14">
                   <svg
                     ref={swiperNext}
                     viewBox="0 0 61 61"

@@ -12,12 +12,12 @@ const MenuOverlay = ({ navbarOpen, setNavbarOpen }) => {
   };
   return (
     <div
-      className={`fixed top-0 left-0 z-20 flex h-screen w-screen translate-y-full transform flex-row flex-wrap bg-black p-10 text-grey transition-all duration-1000 md:p-20 ${
+      className={`fixed top-0 left-0 z-20 flex h-screen w-screen translate-y-full transform flex-row flex-wrap bg-black p-11 text-grey transition-all duration-1000 md:p-20 ${
         navbarOpen ? "" : "hidden h-0"
       }`}
     >
       <button
-        className={`flex h-5 w-5 duration-1000 md:h-10 md:w-10 ${
+        className={`flex h-6 w-6 duration-1000 md:h-10 md:w-10 ${
           navbarOpen ? "opacity-100" : "opacity-0"
         }`}
         onClick={() => {
