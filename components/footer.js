@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className={`fixed bottom-0 z-30 w-full`}>
       <div className="grid w-full grid-cols-1 p-10 md:grid-cols-2 md:p-16">
         <div className="">
-          <p className="pb-10 text-center text-sm text-white md:pb-0 md:text-left md:text-base">
+          <p className="pb-5 text-center text-sm text-white md:pb-0 md:text-left md:text-base">
             324 Grand St
             <br />
             Storefront A<br />
@@ -16,7 +16,7 @@ export default function Footer() {
         </div>
         <div className={``}>
           <div
-            className={`flex h-full items-center justify-center md:float-right md:justify-end`}
+            className={`flex h-full items-center justify-center gap-5 md:float-right md:justify-end`}
           >
             <Link href="https://www.instagram.com/eternaltilidie">
               <a target="_blank" rel="noreferrer">
