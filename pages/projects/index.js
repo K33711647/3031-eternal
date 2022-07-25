@@ -3,6 +3,13 @@ import Container from "../../components/container";
 import Layout from "../../components/layout";
 import { projectIndexQuery } from "../../library/queries";
 import { getClient, overlayDrafts } from "../../library/sanity.server";
+
+import { urlForImage } from "../../library/sanity";
+import Image from "next/image";
+import { useNextSanityImage } from "next-sanity-image";
+
+import { sanityConfig } from "../../library/config";
+
 import { useState, useRef, useEffect } from "react";
 
 import Swiper, { Navigation } from "swiper";
@@ -14,8 +21,8 @@ export default function Index({ allProjects, ...pageProps }) {
   let [swiperActive, setSwiperActive] = useState(false);
   const swiperStatus = useRef(null);
   const swiperRef = useRef(null);
-  const swiperNext = useRef();
-  const swiperPrevious = useRef();
+  const swiperNext = useRef(null);
+  const swiperPrevious = useRef(null);
   const previous = swiperPrevious.current;
   const next = swiperNext.current;
   const swiperOpts = {
@@ -23,7 +30,7 @@ export default function Index({ allProjects, ...pageProps }) {
     slidesPerView: 1,
     draggable: 1,
     modules: [Navigation],
-    initialSlide: 2,
+    // initialSlide: 2,
     navigation: {
       prevEl: previous,
       nextEl: next,
@@ -35,7 +42,7 @@ export default function Index({ allProjects, ...pageProps }) {
   useEffect(() => {
     // This is be executed when `loading` state changes
     swiperStatus.current = new Swiper(swiperRef.current, swiperOpts);
-    goToSlide();
+    // goToSlide();
   }, [loading, swiperOpts]);
 
   let swiper = swiperStatus.current;
@@ -55,6 +62,69 @@ export default function Index({ allProjects, ...pageProps }) {
     swiperStatus.current.slideTo(4);
   }
 
+  const SingleImage = (content) => {
+    const imageProps = useNextSanityImage(sanityConfig, content.image);
+
+    return (
+      <Image
+        {...imageProps}
+        layout="responsive"
+        className={`${swiperActive ? "p-20" : ""}`}
+      />
+    );
+  };
+
+  const Projects = () => {
+    const project = allProjects.map((project, index) => {
+      // if (!project.image) return;
+      // const imageSource = project.image.asset;
+      // const imageUrl = urlForImage(imageSource);
+      // const slug = project.slug;
+      // console.log(project);
+      return (
+        <div
+          key={index}
+          onClick={init}
+          // data-slide-id="4"
+          className={`relative text-white ${
+            swiperActive
+              ? "swiper-slide flex h-screen w-screen items-center justify-center"
+              : "h-0 w-full overflow-hidden pb-full hover:cursor-pointer"
+          }`}
+        >
+          <div className={`${swiperActive ? "w-1/3 p-40" : ""}`}>
+            <div>
+              <SingleImage image={project.image} />
+            </div>
+            <div
+              className={`text-center ${
+                swiperActive
+                  ? ""
+                  : "absolute top-0 flex h-full w-full items-center justify-center bg-black opacity-0 hover:opacity-70"
+              }`}
+            >
+              <h3 className="pb-4 pt-10 text-3xl">{project.title}</h3>
+              <p className={`${swiperActive ? "" : "hidden"}`}>
+                {project.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      );
+    });
+    return (
+      <div
+        className={` origin-bottom  ${
+          swiperActive
+            ? "swiper-wrapper "
+            : "grid grid-cols-2 gap-4 md:gap-10 xl:grid-cols-3"
+        }`}
+      >
+        {project}
+      </div>
+    );
+  };
+
   return (
     <>
       <Layout>
@@ -63,13 +133,13 @@ export default function Index({ allProjects, ...pageProps }) {
         </Head>
         <Container>
           <div
-            className={`transition-all duration-1000 ${
+            className={` ${
               swiperActive ? "relative z-50 h-full w-full bg-black " : ""
             }`}
           >
             <div className="fixed top-11 left-11 z-50 flex items-center justify-center md:top-20 md:left-20 ">
               <div
-                className={`flex h-6 w-6 text-white duration-1000 md:h-10 md:w-10 ${
+                className={`flex h-6 w-6 text-white md:h-10 md:w-10 ${
                   swiperActive ? "" : "hidden"
                 }`}
                 onClick={destroy}
@@ -90,7 +160,7 @@ export default function Index({ allProjects, ...pageProps }) {
             </div>
             <div
               ref={swiperRef}
-              className={`h-full py-32 px-5 text-white transition-all duration-1000 md:py-40 lg:px-60 ${
+              className={`h-full py-32 px-5 text-white  md:py-40 lg:px-60 ${
                 swiperActive ? "swiper" : ""
               }`}
             >
@@ -130,20 +200,15 @@ export default function Index({ allProjects, ...pageProps }) {
                   </svg>
                 </div>
               </div>
-              <div
-                className={` origin-bottom transition-all duration-1000 ${
-                  swiperActive
-                    ? "swiper-wrapper "
-                    : "grid grid-cols-2 gap-4 md:gap-10 xl:grid-cols-4"
-                }`}
-              >
-                <div
+
+              <Projects />
+              {/*<div
                   onClick={init}
                   data-slide-id="4"
                   className={`relative text-white ${
                     swiperActive
                       ? "swiper-slide flex h-screen w-screen items-center justify-center"
-                      : "h-0 w-full overflow-hidden pb-full"
+                      : "h-0 w-full overflow-hidden pb-full hover:cursor-pointer"
                   }`}
                 >
                   <div>
@@ -166,128 +231,7 @@ export default function Index({ allProjects, ...pageProps }) {
                       </p>
                     </div>
                   </div>
-                </div>
-
-                <div
-                  onClick={init}
-                  className={`relative text-white ${
-                    swiperActive
-                      ? "swiper-slide flex h-screen w-screen items-center justify-center"
-                      : "h-0 w-full overflow-hidden pb-full"
-                  }`}
-                >
-                  <div>
-                    <img
-                      className={`${
-                        swiperActive ? "p-20" : "w-full object-cover"
-                      }`}
-                      src="https://cdn.sanity.io/images/i13tycho/production/e4faf7b12dc090171097c6088765320b49ca97c5-360x640.jpg"
-                    />
-                    <div
-                      className={`text-center ${
-                        swiperActive
-                          ? ""
-                          : "absolute top-0 flex h-full w-full items-center justify-center bg-black opacity-0 hover:opacity-70"
-                      }`}
-                    >
-                      <h3 className="pb-4 text-3xl">2 Exit Sign</h3>
-                      <p className={`${swiperActive ? "" : "hidden"}`}>
-                        An imaginary web series by Eternal.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  onClick={init}
-                  className={`relative text-white ${
-                    swiperActive
-                      ? "swiper-slide flex h-screen w-screen items-center justify-center"
-                      : "h-0 w-full overflow-hidden pb-full"
-                  }`}
-                >
-                  <div>
-                    <img
-                      className={`${
-                        swiperActive ? "p-20" : "w-full object-cover"
-                      }`}
-                      src="https://cdn.sanity.io/images/i13tycho/production/e4faf7b12dc090171097c6088765320b49ca97c5-360x640.jpg"
-                    />
-                    <div
-                      className={`text-center ${
-                        swiperActive
-                          ? ""
-                          : "absolute top-0 flex h-full w-full items-center justify-center bg-black opacity-0 hover:opacity-70"
-                      }`}
-                    >
-                      <h3 className="pb-4 text-3xl">3 Exit Sign</h3>
-                      <p className={`${swiperActive ? "" : "hidden"}`}>
-                        An imaginary web series by Eternal.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  onClick={init}
-                  className={`relative text-white ${
-                    swiperActive
-                      ? "swiper-slide flex h-screen w-screen items-center justify-center"
-                      : "h-0 w-full overflow-hidden pb-full"
-                  }`}
-                >
-                  <div>
-                    <img
-                      className={`${
-                        swiperActive ? "p-20" : "w-full object-cover"
-                      }`}
-                      src="https://cdn.sanity.io/images/i13tycho/production/e4faf7b12dc090171097c6088765320b49ca97c5-360x640.jpg"
-                    />
-                    <div
-                      className={`text-center ${
-                        swiperActive
-                          ? ""
-                          : "absolute top-0 flex h-full w-full items-center justify-center bg-black opacity-0 hover:opacity-70"
-                      }`}
-                    >
-                      <h3 className="pb-4 text-3xl">4 Exit Sign</h3>
-                      <p className={`${swiperActive ? "" : "hidden"}`}>
-                        An imaginary web series by Eternal.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  onClick={init}
-                  className={`relative text-white ${
-                    swiperActive
-                      ? "swiper-slide flex h-screen w-screen items-center justify-center"
-                      : "h-0 w-full overflow-hidden pb-full"
-                  }`}
-                >
-                  <div>
-                    <img
-                      className={`${
-                        swiperActive ? "p-20" : "w-full object-cover"
-                      }`}
-                      src="https://cdn.sanity.io/images/i13tycho/production/e4faf7b12dc090171097c6088765320b49ca97c5-360x640.jpg"
-                    />
-                    <div
-                      className={`text-center ${
-                        swiperActive
-                          ? ""
-                          : "absolute top-0 flex h-full w-full items-center justify-center bg-black opacity-0 hover:opacity-70"
-                      }`}
-                    >
-                      <h3 className="pb-4 text-3xl">5 Exit Sign</h3>
-                      <p className={`${swiperActive ? "" : "hidden"}`}>
-                        An imaginary web series by Eternal.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                </div>*/}
             </div>
           </div>
         </Container>

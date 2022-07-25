@@ -18,8 +18,10 @@ export default function App({ Component, pageProps, router }) {
     <>
       <ThemeProvider attribute="class">
         <div
-          className={`transition-translate h-screen duration-1000 ${
-            navbarOpen ? "-translate-y-full" : "translate-y-0"
+          className={`transition-translate duration-1000 ${
+            navbarOpen
+              ? "h-screen -translate-y-full"
+              : "min-h-screen translate-y-0"
           }`}
         >
           <Header navbarOpen={navbarOpen} setNavbarOpen={setNavbarOpen} />

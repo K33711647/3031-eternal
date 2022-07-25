@@ -69,7 +69,7 @@ export default function Project({ preview, data = {}, allProjects }) {
   const ProjectBuilder = () => {
     return (
       <>
-        <div className="flex h-full min-h-screen w-full items-center justify-center  text-center">
+        <div className="flex h-full min-h-screen w-full items-center justify-center text-center">
           <div className="p-10">
             <FeaturedImage />
             <h1 className="pt-10 pb-5 text-4xl text-white">{projectTitle}</h1>
