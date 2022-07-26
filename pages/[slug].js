@@ -93,7 +93,7 @@ export default function Page({ preview, data = {} }) {
           <title></title>
         </Head>
         <Container>
-          <div className="flex h-screen flex-col items-center justify-center">
+          <div className="flex h-screen flex-col items-center justify-center pb-40">
             <h1 className="pb-10 text-2xl text-white">
               Eternal is currently hiring...
             </h1>
