@@ -5,7 +5,9 @@ export default function Footer() {
   const router = useRouter();
   return (
     <footer
-      className={`${router.pathname === "/" ? "fixed bottom-0" : ""}  w-full`}
+      className={`${
+        router.pathname === "/projects" ? "" : "fixed bottom-0"
+      }  w-full`}
     >
       <div className="grid w-full grid-cols-1 p-8 md:grid-cols-2 md:p-16">
         <div className="">
