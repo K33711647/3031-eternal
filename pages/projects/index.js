@@ -19,10 +19,15 @@ import "swiper/css";
 
 export default function Index({ allProjects, ...pageProps }) {
   let [swiperActive, setSwiperActive] = useState(false);
-  const swiperStatus = useRef(null);
-  const swiperRef = useRef(null);
-  const swiperNext = useRef(null);
-  const swiperPrevious = useRef(null);
+  let [loading, setLoading] = useState(false);
+  let slideIndex = 0;
+
+  let swiperStatus = useRef(null);
+  let swiperRef = useRef(null);
+  let swiperNext = useRef(null);
+  let swiperPrevious = useRef(null);
+  let swiper = swiperStatus.current;
+
   const previous = swiperPrevious.current;
   const next = swiperNext.current;
   const swiperOpts = {
@@ -30,22 +35,20 @@ export default function Index({ allProjects, ...pageProps }) {
     slidesPerView: 1,
     draggable: 1,
     modules: [Navigation],
-    // initialSlide: 2,
+    initialSlide: slideIndex,
     navigation: {
       prevEl: previous,
       nextEl: next,
     },
   };
 
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    // This is be executed when `loading` state changes
-    swiperStatus.current = new Swiper(swiperRef.current, swiperOpts);
-    // goToSlide();
-  }, [loading, swiperOpts]);
-
-  let swiper = swiperStatus.current;
+  const goToTop = (event) => {
+    event.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   function destroy() {
     swiperStatus.current.destroy(true, true);
@@ -53,13 +56,15 @@ export default function Index({ allProjects, ...pageProps }) {
     setLoading(false);
   }
 
-  function init() {
+  function initiateSwiper() {
     setSwiperActive(true);
     setLoading(true);
   }
 
-  function goToSlide() {
-    swiperStatus.current.slideTo(4);
+  function goToSlide(slideIndex) {
+    setTimeout(function () {
+      swiperStatus.current.slideTo(parseInt(slideIndex));
+    }, 150);
   }
 
   const SingleImage = (content) => {
@@ -69,55 +74,75 @@ export default function Index({ allProjects, ...pageProps }) {
       <Image
         {...imageProps}
         layout="responsive"
-        className={`${swiperActive ? "p-20" : ""}`}
+        priority
+        className={`delay-250 transition-all duration-500 ease-in-out ${
+          swiperActive ? "p-20" : ""
+        }`}
       />
     );
   };
 
+  useEffect(() => {
+    // This is be executed when `loading` state changes
+    swiperStatus.current = new Swiper(swiperRef.current, swiperOpts);
+  }, [loading, swiperOpts]);
+
+  function handleClick(event) {
+    goToTop(event);
+    initiateSwiper();
+
+    slideIndex = parseInt(event.target.closest("[data-index]").dataset.index);
+    goToSlide(slideIndex);
+  }
+
   const Projects = () => {
     const project = allProjects.map((project, index) => {
-      // if (!project.image) return;
-      // const imageSource = project.image.asset;
-      // const imageUrl = urlForImage(imageSource);
-      // const slug = project.slug;
-      // console.log(project);
       return (
         <div
           key={index}
-          onClick={init}
-          // data-slide-id="4"
+          data-index={index + 1}
+          onClick={handleClick}
           className={`relative text-white ${
             swiperActive
-              ? "swiper-slide flex h-screen w-screen items-center justify-center"
+              ? "swiper-slide h-full w-full"
               : "h-0 w-full overflow-hidden pb-full hover:cursor-pointer"
           }`}
         >
-          <div className={`${swiperActive ? "w-1/3 p-40" : ""}`}>
-            <div>
+          <div
+            className={`${
+              swiperActive
+                ? "flex min-h-screen w-screen justify-center md:items-center"
+                : ""
+            }`}
+          >
+            <div className={`${swiperActive ? "w-3/5 lg:w-1/6" : ""}`}>
               <SingleImage image={project.image} />
-            </div>
-            <div
-              className={`text-center ${
-                swiperActive
-                  ? ""
-                  : "absolute top-0 flex h-full w-full items-center justify-center bg-black opacity-0 hover:opacity-70"
-              }`}
-            >
-              <h3 className="pb-4 pt-10 text-3xl">{project.title}</h3>
-              <p className={`${swiperActive ? "" : "hidden"}`}>
-                {project.description}
-              </p>
+              <div
+                className={`text-center ${
+                  swiperActive
+                    ? ""
+                    : "absolute top-0 flex h-full w-full scale-100 items-center justify-center bg-black opacity-0 hover:opacity-70"
+                }`}
+              >
+                <h3 className="pb-4 pt-10 text-2xl lg:text-3xl">
+                  {project.title}
+                </h3>
+                <p className={`${swiperActive ? "" : "hidden"}`}>
+                  {project.description}
+                </p>
+              </div>
             </div>
           </div>
         </div>
       );
     });
+
     return (
       <div
-        className={` origin-bottom  ${
+        className={`${
           swiperActive
             ? "swiper-wrapper "
-            : "grid grid-cols-2 gap-4 md:gap-10 xl:grid-cols-3"
+            : "grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-10 xl:grid-cols-4"
         }`}
       >
         {project}
@@ -133,14 +158,14 @@ export default function Index({ allProjects, ...pageProps }) {
         </Head>
         <Container>
           <div
-            className={` ${
-              swiperActive ? "relative z-50 h-full w-full bg-black " : ""
+            className={`${
+              swiperActive ? "relative z-50 h-full w-full bg-black py-20" : ""
             }`}
           >
             <div className="fixed top-11 left-11 z-50 flex items-center justify-center md:top-20 md:left-20 ">
               <div
                 className={`flex h-6 w-6 text-white md:h-10 md:w-10 ${
-                  swiperActive ? "" : "hidden"
+                  swiperActive ? "hover:cursor-pointer" : "hidden"
                 }`}
                 onClick={destroy}
               >
@@ -160,12 +185,12 @@ export default function Index({ allProjects, ...pageProps }) {
             </div>
             <div
               ref={swiperRef}
-              className={`h-full py-32 px-5 text-white  md:py-40 lg:px-60 ${
+              className={`h-full py-32 px-5 text-white  md:py-52 lg:px-60 ${
                 swiperActive ? "swiper" : ""
               }`}
             >
               <div className={`${swiperActive ? "" : "hidden"}`}>
-                <div className="absolute left-5 z-50 flex h-screen w-8 items-center justify-center md:left-20 md:w-14">
+                <div className="absolute left-5 z-50 flex h-screen w-8 items-center justify-center hover:cursor-pointer md:left-20 md:w-14">
                   <svg
                     ref={swiperPrevious}
                     viewBox="0 0 61 61"
@@ -182,7 +207,7 @@ export default function Index({ allProjects, ...pageProps }) {
                     />
                   </svg>
                 </div>
-                <div className="absolute right-5 z-50 flex h-screen w-8 items-center justify-center md:right-28 md:w-14">
+                <div className="absolute right-5 z-50 flex h-screen w-8 items-center justify-center hover:cursor-pointer md:right-28 md:w-14">
                   <svg
                     ref={swiperNext}
                     viewBox="0 0 61 61"
@@ -200,38 +225,7 @@ export default function Index({ allProjects, ...pageProps }) {
                   </svg>
                 </div>
               </div>
-
               <Projects />
-              {/*<div
-                  onClick={init}
-                  data-slide-id="4"
-                  className={`relative text-white ${
-                    swiperActive
-                      ? "swiper-slide flex h-screen w-screen items-center justify-center"
-                      : "h-0 w-full overflow-hidden pb-full hover:cursor-pointer"
-                  }`}
-                >
-                  <div>
-                    <img
-                      className={`${
-                        swiperActive ? "p-20" : "w-full object-cover"
-                      }`}
-                      src="https://cdn.sanity.io/images/i13tycho/production/e4faf7b12dc090171097c6088765320b49ca97c5-360x640.jpg"
-                    />
-                    <div
-                      className={`text-center ${
-                        swiperActive
-                          ? ""
-                          : "absolute top-0 flex h-full w-full items-center justify-center bg-black opacity-0 hover:opacity-70"
-                      }`}
-                    >
-                      <h3 className="pb-4 text-3xl">1 Exit Sign</h3>
-                      <p className={`${swiperActive ? "" : "hidden"}`}>
-                        An imaginary web series by Eternal.
-                      </p>
-                    </div>
-                  </div>
-                </div>*/}
             </div>
           </div>
         </Container>

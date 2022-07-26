@@ -53,3 +53,54 @@ svg {
 svg path {
 	/*stroke: #fff;*/
 }
+
+.rolodex {
+	width: 100%;
+	/*position: absolute;*/
+	text-align: center;
+	z-index: 9999;
+	overflow: hidden;
+	perspective: 1800px;
+	display: grid;
+	place-content: center;
+}
+
+.rolodex::before,
+.rolodex::after {
+	content: "";
+	position: absolute;
+	right: 0;
+	left: 0;
+	height: 30%;
+	z-index: 1;
+	pointer-events: none;
+}
+.rolodex::before {
+	top: 0;
+	background-image: linear-gradient(rgba(0, 0, 0, 1) 5%, rgba(0, 0, 0, 0));
+}
+.rolodex::after {
+	bottom: 0;
+	background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 95%);
+}
+
+.rolodex ul {
+	position: absolute;
+
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transform-style: preserve-3d;
+}
+.rolodex li {
+	white-space: nowrap;
+	position: absolute;
+	width: 100%;
+	backface-visibility: hidden;
+	transform-style: preserve-3d;
+
+	font-size: 2rem;
+	line-height: 64px;
+	padding: 1rem;
+}
