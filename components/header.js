@@ -18,7 +18,7 @@ const Header = ({ navbarOpen, setNavbarOpen, splashOpen, setSplashOpen }) => {
   return (
     <>
       <header
-        className={`absolute z-20 flex w-full justify-between p-10 md:p-16 ${
+        className={`absolute z-20 flex w-full justify-between p-5 md:p-16 ${
           navbarOpen ? "" : ""
         }`}
       >

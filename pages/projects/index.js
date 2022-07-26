@@ -75,7 +75,7 @@ export default function Index({ allProjects, ...pageProps }) {
         {...imageProps}
         layout="responsive"
         priority
-        className={`delay-250 transition-all duration-500 ease-in-out ${
+        className={`transition-all duration-500 ease-in-out ${
           swiperActive ? "p-20" : ""
         }`}
       />
@@ -162,7 +162,7 @@ export default function Index({ allProjects, ...pageProps }) {
               swiperActive ? "relative z-50 h-full w-full bg-black py-20" : ""
             }`}
           >
-            <div className="fixed top-11 left-11 z-50 flex items-center justify-center md:top-20 md:left-20 ">
+            <div className="fixed top-8 left-6 z-50 flex items-center justify-center md:top-20 md:left-20 ">
               <div
                 className={`flex h-6 w-6 text-white md:h-10 md:w-10 ${
                   swiperActive ? "hover:cursor-pointer" : "hidden"

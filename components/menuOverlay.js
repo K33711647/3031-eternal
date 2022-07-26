@@ -14,7 +14,7 @@ const MenuOverlay = ({ navbarOpen, setNavbarOpen }) => {
   };
   return (
     <div
-      className={`fixed top-0 left-0 z-20 flex h-full w-full w-screen translate-y-full transform flex-col flex-wrap bg-black p-11 text-grey duration-1000 md:justify-between md:p-20 ${
+      className={`fixed top-0 left-0 z-20 flex h-full w-full w-screen translate-y-full transform flex-col flex-wrap bg-black p-8 text-grey duration-1000 md:justify-between md:p-20 ${
         navbarOpen ? "" : "hidden h-0"
       }`}
     >
